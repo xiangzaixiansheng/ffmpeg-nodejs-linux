@@ -2,13 +2,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [ffmpeg6.0 + nodejs16.17.1 + 内置ffcreator](#ffmpeg60--nodejs16171--%E5%86%85%E7%BD%AEffcreator)
-  - [一、镜像地址](#%E4%B8%80%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80)
-  - [二、修改问题：](#%E4%BA%8C%E4%BF%AE%E6%94%B9%E9%97%AE%E9%A2%98)
-  - [三、使用注意](#%E4%B8%89%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F)
-  - [四、镜像dockerFile例子](#%E5%9B%9B%E9%95%9C%E5%83%8Fdockerfile%E4%BE%8B%E5%AD%90)
-    - [cp命令学习：](#cp%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0)
-      - [把ffcreator文件夹 拷贝到node_modules下的ffcreator](#%E6%8A%8Affcreator%E6%96%87%E4%BB%B6%E5%A4%B9-%E6%8B%B7%E8%B4%9D%E5%88%B0node_modules%E4%B8%8B%E7%9A%84ffcreator)
+- [ffmpeg6.0 + nodejs16.17.1 + 内置ffcreator](#ffmpeg60--nodejs16171--内置ffcreator)
+  - [一、镜像地址](#一镜像地址)
+  - [二、修改问题：](#二修改问题)
+  - [三、使用注意](#三使用注意)
+  - [四、镜像dockerFile例子](#四镜像dockerfile例子)
+    - [cp命令学习：](#cp命令学习)
+      - [把ffcreator文件夹 拷贝到node\_modules下的ffcreator](#把ffcreator文件夹-拷贝到node_modules下的ffcreator)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -31,7 +31,7 @@ npm install gl --gl_binary_host_mirror=https://registry.npmmirror.com/-/binary/g
 
 ### 一、镜像地址
 
-docker pull xiangzaidocker/ffmpeg6.0-nodejs-linux-v1:ffcreatorv1
+docker pull xiangzaidocker/ffmpeg6.0-nodejs-linux:v2-ffcreator
 
 ubuntu、ffmpeg6.0、nodejsv16.17.1、ffcreator@7.2.2、python3.10
 
