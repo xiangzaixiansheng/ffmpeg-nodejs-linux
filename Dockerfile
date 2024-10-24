@@ -1,17 +1,18 @@
-FROM linuxserver/ffmpeg:amd64-latest
+# FROM linuxserver/ffmpeg:amd64-latest
+FROM linuxserver/ffmpeg:6.0-cli-ls93
 
 COPY dAppCluster /etc/dAppCluster
 
-RUN tar zxf /etc/dAppCluster/node-v16.17.1-linux-x64.tar.gz -C /etc/dAppCluster/; \
+RUN tar zxf /etc/dAppCluster/node-v18.20.4-linux-x64.tar.gz -C /etc/dAppCluster/; \
     mkdir -p /usr/local/nodejs\
-    && mv /etc/dAppCluster/node-v16.17.1-linux-x64/* /usr/local/nodejs
+    && mv /etc/dAppCluster/node-v18.20.4-linux-x64/* /usr/local/nodejs
 
 
 ENV PATH=/usr/local/nodejs/bin:${PATH}
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
-RUN npm install -g pm2;
+RUN npm config set registry https://registry.npmmirror.com && npm install -g pm2;
 
 # 安装python3
 RUN apt-get update && apt-get install -y xvfb && \
@@ -22,5 +23,4 @@ RUN apt-get update && apt-get install -y xvfb && \
 RUN ln -s /usr/bin/python3 /usr/bin/python && apt-get install -y build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config
 
 # 预制ffcreator
-RUN npm -g config set user root && \
-    npm install -g ffcreator@7.2.2 --unsafe-perm;
+RUN npm install -g ffcreator@7.5.8 --unsafe-perm;
