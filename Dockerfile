@@ -3,10 +3,14 @@ FROM linuxserver/ffmpeg:6.0-cli-ls93
 
 COPY dAppCluster /etc/dAppCluster
 
-RUN tar zxf /etc/dAppCluster/node-v18.20.4-linux-x64.tar.gz -C /etc/dAppCluster/; \
+RUN tar zxf /etc/dAppCluster/node-v20.18.0-linux-x64.tar.gz -C /etc/dAppCluster/; \
     mkdir -p /usr/local/nodejs\
-    && mv /etc/dAppCluster/node-v18.20.4-linux-x64/* /usr/local/nodejs
+    && mv /etc/dAppCluster/node-v20.18.0-linux-x64/* /usr/local/nodejs
 
+RUN mkdir -p /usr/share/filebeat  && cd /usr/share && \
+    tar -xzf /etc/dAppCluster/filebeat-8.13.0-linux-x86_64.tar.gz -C /usr/share/filebeat --strip-components=1 && \
+    rm -f /etc/dAppCluster/filebeat-8.13.0-linux-x86_64.tar.gz && \
+    chmod +x /usr/share/filebeat
 
 ENV PATH=/usr/local/nodejs/bin:${PATH}
 
