@@ -116,6 +116,11 @@ pm2启动的json。因为没有屏幕，所以使用Xvfb启动项目。
 }
 ```
 
+镜像说明：
+
+chrome的地址：
+/root/.cache/puppeteer/chrome/linux-130.0.6723.58/chrome-linux64/chrome
+
 
 
 
