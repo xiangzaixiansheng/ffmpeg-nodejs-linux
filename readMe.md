@@ -144,3 +144,56 @@ cp -r /usr/local/nodejs/lib/node_modules/ffcreator ./node_modules
 
 
 cp -r /usr/local/nodejs/lib/node_modules/ffcreator/node_modules/* ./node_modules/
+
+
+五、syslog的使用说明
+
+```
+$EscapeControlCharactersOnReceive off
+ruleset( name="forwardRuleSet_logmix" ) {
+    action(
+        type="omfwd"
+        Target="*****.cn"
+        Port="514"
+        Protocol="tcp"
+        RebindInterval="5000"
+        action.resumeRetryCount="-1"
+        zipLevel="3"
+        compression.mode="single"
+        name="action_logmix"
+        queue.type="linkedlist"
+        queue.workerthreads="4"
+        queue.filename="action_logmix"
+        queue.size="1500000"
+        queue.dequeuebatchsize="500"
+        queue.maxdiskspace="1000M"
+        queue.discardseverity="8"
+        queue.maxfilesize="200M"
+        queue.saveonshutdown="on"
+        queue.HighWatermark="900000" #当内存队列达到这些元素时，开始回写磁盘。
+        queue.LowWatermark="15000" #当内存队列小于这些元素时，停止回写磁盘。
+        queue.DiscardMark="1200000" #超出亿后，会禁止新消息入队，丢弃消息。如果前一个被禁止，那么丢弃数据将无针对性,如果
+        queue.TimeoutEnqueue="0" #超时3秒，TCP或local_socket方式下，预防资源夯住，引起崩溃。
+    )
+    stop
+}
+ 
+if ( $syslogfacility-text == 'local5') then {
+    call forwardRuleSet_logmix
+    stop
+}
+
+```
+
+
+拷贝配置 并启动syslog的方法
+
+```shell
+#!/bin/bash
+cp ./rsyslog.conf /etc/rsyslog.d/logger_rsyslog.conf
+
+/sbin/rsyslogd &>/dev/null
+# pm2 start ./build/index.js --name app --no-daemon
+pm2 start ./exec/process.json --no-daemon
+
+```
