@@ -10,6 +10,8 @@
   - [四、镜像dockerFile例子](#四镜像dockerfile例子)
     - [cp命令学习：](#cp命令学习)
       - [把ffcreator文件夹 拷贝到node\_modules下的ffcreator](#把ffcreator文件夹-拷贝到node_modules下的ffcreator)
+  - [五、syslog的使用说明](#五syslog的使用说明)
+  - [六、市区设置](#六市区设置)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -146,7 +148,7 @@ cp -r /usr/local/nodejs/lib/node_modules/ffcreator ./node_modules
 cp -r /usr/local/nodejs/lib/node_modules/ffcreator/node_modules/* ./node_modules/
 
 
-#### 五、syslog的使用说明
+### 五、syslog的使用说明
 
 ```
 $EscapeControlCharactersOnReceive off
@@ -199,7 +201,7 @@ pm2 start ./exec/process.json --no-daemon
 ```
 
 
-#### 六、市区设置
+### 六、市区设置
 
 #定义时区参数
 ENV TZ=Asia/Shanghai
