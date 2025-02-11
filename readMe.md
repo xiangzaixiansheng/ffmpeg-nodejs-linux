@@ -146,7 +146,7 @@ cp -r /usr/local/nodejs/lib/node_modules/ffcreator ./node_modules
 cp -r /usr/local/nodejs/lib/node_modules/ffcreator/node_modules/* ./node_modules/
 
 
-五、syslog的使用说明
+#### 五、syslog的使用说明
 
 ```
 $EscapeControlCharactersOnReceive off
@@ -197,3 +197,11 @@ cp ./rsyslog.conf /etc/rsyslog.d/logger_rsyslog.conf
 pm2 start ./exec/process.json --no-daemon
 
 ```
+
+
+#### 六、市区设置
+
+#定义时区参数
+ENV TZ=Asia/Shanghai
+#设置时区
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo '$TZ' > /etc/timezone
