@@ -2,16 +2,16 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [镜像的地址:](#镜像的地址)
-- [ffmpeg6.0 + nodejs16.17.1 + 内置ffcreator](#ffmpeg60--nodejs16171--内置ffcreator)
-  - [一、镜像地址](#一镜像地址)
-  - [二、修改问题：](#二修改问题)
-  - [三、使用注意](#三使用注意)
-  - [四、镜像dockerFile例子](#四镜像dockerfile例子)
-    - [cp命令学习：](#cp命令学习)
-      - [把ffcreator文件夹 拷贝到node\_modules下的ffcreator](#把ffcreator文件夹-拷贝到node_modules下的ffcreator)
-  - [五、syslog的使用说明](#五syslog的使用说明)
-  - [六、市区设置](#六市区设置)
+- [python3.10镜像](#python310镜像)
+  - [ffmpeg6.0 + nodejs16.17.1 + 内置ffcreator](#ffmpeg60--nodejs16171--内置ffcreator)
+    - [一、镜像地址](#一镜像地址)
+    - [二、修改问题：](#二修改问题)
+    - [三、使用注意](#三使用注意)
+    - [四、镜像dockerFile例子](#四镜像dockerfile例子)
+      - [cp命令学习：](#cp命令学习)
+        - [把ffcreator文件夹 拷贝到node\_modules下的ffcreator](#把ffcreator文件夹-拷贝到node_modules下的ffcreator)
+    - [五、syslog的使用说明](#五syslog的使用说明)
+    - [六、市区设置](#六市区设置)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -20,7 +20,9 @@
 registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:01
 
 
+# python3.10镜像
 registry.cn-hangzhou.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
+registry.cn-beijing.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
 
 
 
