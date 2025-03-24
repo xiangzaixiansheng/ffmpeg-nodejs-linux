@@ -1,5 +1,5 @@
 # FROM linuxserver/ffmpeg:amd64-latest
-FROM registry.cn-hangzhou.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
+FROM registry.cn-beijing.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
 
 # 设置时区
 ENV TZ=Asia/Shanghai
