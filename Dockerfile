@@ -20,9 +20,9 @@ ENV ANDROID_HOME=/usr/local/android-sdk
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME
 ENV PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
 
-
 # 安装系统依赖、Android SDK和Python依赖
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     adb \
     wget \
     unzip \
@@ -30,16 +30,18 @@ RUN apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
     pkg-config \
-    libgtk-3-dev \
-    && rm -rf /var/lib/apt/lists/* \
+    libgtk-3-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # 下载和安装Android SDK命令行工具
-RUN mkdir -p $ANDROID_HOME && cd $ANDROID_HOME && \
+RUN mkdir -p $ANDROID_HOME && \
+    cd $ANDROID_HOME && \
     wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O sdk.zip && \
     unzip sdk.zip && \
     rm sdk.zip && \
     mkdir -p cmdline-tools/latest && \
     mv cmdline-tools/* cmdline-tools/latest/ 2>/dev/null || true && \
+    mkdir -p cmdline-tools/latest/bin && \
     cd cmdline-tools/latest/bin && \
     ./sdkmanager --update && \
     yes | ./sdkmanager --licenses && \
