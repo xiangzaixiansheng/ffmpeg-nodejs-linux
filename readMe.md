@@ -22,11 +22,13 @@ registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:01
 
 
 # python3.10镜像
-registry.cn-hangzhou.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
+registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:release-01
+
 registry.cn-beijing.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
 
 # python3.11镜像
 增加安卓环境和adb相关的东西
+
 registry.cn-beijing.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01-py3.11
 
 
