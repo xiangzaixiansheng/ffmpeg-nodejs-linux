@@ -1,58 +1,15 @@
 # FROM linuxserver/ffmpeg:amd64-latest
-FROM linuxserver/ffmpeg:6.0-cli-ls93
+FROM registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:01
 
-COPY dAppCluster /etc/dAppCluster
+# 拷贝 Chrome 安装包
+COPY google-chrome-stable_current_amd64.deb /tmp/
 
-RUN tar zxf /etc/dAppCluster/node-v20.18.0-linux-x64.tar.gz -C /etc/dAppCluster/; \
-    mkdir -p /usr/local/nodejs\
-    && mv /etc/dAppCluster/node-v20.18.0-linux-x64/* /usr/local/nodejs
+# 安装 Chrome 浏览器并处理依赖 下载官方 .deb 安装包
+# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-RUN mkdir -p /usr/share/filebeat  && cd /usr/share && \
-    tar -xzf /etc/dAppCluster/filebeat-8.13.0-linux-x86_64.tar.gz -C /usr/share/filebeat --strip-components=1 && \
-    rm -f /etc/dAppCluster/filebeat-8.13.0-linux-x86_64.tar.gz && \
-    chmod +x /usr/share/filebeat
+RUN apt-get update && \
+    # apt-get install -y wget gnupg2 fonts-liberation libgtk-3-0 libvulkan1 xdg-utils && \
+    (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt --fix-broken install -y) && \
+    dpkg -i /tmp/google-chrome-stable_current_amd64.deb && \
+    rm /tmp/google-chrome-stable_current_amd64.deb
 
-ENV PATH=/usr/local/nodejs/bin:${PATH}
-
-RUN cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
-
-RUN npm config set registry https://registry.npmmirror.com && npm install -g pm2 cnpm;
-
-# 安装python3
-RUN apt-get update && apt-get install -y xvfb && \
-    apt install software-properties-common -y && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt install python3.10 -y && \
-    apt-get install -y python3-pip curl wget vim && \
-    apt-get install -y rsyslog rsyslog-kafka && \
-    apt-get clean
-
-# 安装puppeteer依赖
-RUN apt-get update && apt-get install -y \
-    libnss3 \
-    libnspr4 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libdrm2 \
-    libxkbcommon0 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxfixes3 \
-    libxrandr2 \
-    libgbm1 \
-    libasound2 \
-    libpango-1.0-0 \
-    libcairo2 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-
-# 安装gl相关包
-RUN ln -s /usr/bin/python3 /usr/bin/python && apt-get install -y build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config
-
-# 安装puppeteer
-RUN cnpm install -g puppeteer@23.6.0 --unsafe-perm
-
-# 预制ffcreator
-RUN npm install -g ffcreator@7.5.8 --unsafe-perm;

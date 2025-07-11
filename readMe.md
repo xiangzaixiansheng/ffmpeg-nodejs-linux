@@ -19,6 +19,14 @@
 ## 镜像的地址:
 registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:01
 
+```
+这个主要增加了 chrome 浏览器 是正常版本的。
+程序文件：/opt/google/chrome/
+puppeteer的路径填写、可执行命令：/usr/bin/google-chrome-stable
+```
+
+registry.cn-hangzhou.aliyuncs.com/hanxiang/ffmpeg6.0-nodejs-linux-node20.18:02
+
 
 # python3.10镜像
 registry.cn-hangzhou.aliyuncs.com/mfe/ffmpeg6.0-nodejs-linux-node20.18:release-01
