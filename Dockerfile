@@ -65,7 +65,7 @@ RUN apt-get update && apt-get install -y \
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # 安装puppeteer
-RUN cnpm install -g puppeteer@24.28.0--unsafe-perm
+RUN cnpm install -g puppeteer@24.28.0 --unsafe-perm
 
 # 预制ffcreator
 RUN npm install -g ffcreator@7.5.8 --unsafe-perm;
