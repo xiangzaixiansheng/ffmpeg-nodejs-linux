@@ -53,10 +53,10 @@ RUN apt-get update && apt-get install -y \
     libgbm1 \
     libasound2 \
     libpango-1.0-0 \
-    libcairo2 \
-    && apt install -y adb build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fonts-noto-cjk
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libcairo2  && \
+    apt install -y adb build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fonts-noto-cjk  && \
+    apt-get clean  && \
+    rm -rf /var/lib/apt/lists/*
 
 
 # 安装gl相关包
