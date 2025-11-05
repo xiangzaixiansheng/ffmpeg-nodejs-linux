@@ -5,7 +5,9 @@ COPY dAppCluster /etc/dAppCluster
 
 RUN tar zxf /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz -C /etc/dAppCluster/; \
     mkdir -p /usr/local/nodejs\
-    && mv /etc/dAppCluster/node-v20.18.0-linux-x64/* /usr/local/nodejs
+    && mv /etc/dAppCluster/node-v22.2.0-linux-x64/* /usr/local/nodejs
+    && rm -rf /etc/dAppCluster/node-v22.2.0-linux-x64 /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz
+
 
 RUN mkdir -p /usr/share/filebeat  && cd /usr/share && \
     tar -xzf /etc/dAppCluster/filebeat-8.13.0-linux-x86_64.tar.gz -C /usr/share/filebeat --strip-components=1 && \
@@ -29,7 +31,7 @@ RUN npm config set registry https://registry.npmmirror.com && npm install -g pm2
 RUN apt-get update && apt-get install -y xvfb && \
     apt install software-properties-common -y && \
     add-apt-repository ppa:deadsnakes/ppa && \
-    apt install python3.10 -y && \
+    apt install python3.12 -y && \
     apt-get install -y python3-pip curl wget vim && \
     apt-get install -y rsyslog rsyslog-kafka && \
     apt-get clean
