@@ -3,10 +3,10 @@ FROM linuxserver/ffmpeg:amd64-version-8.0-cli
 COPY dAppCluster /etc/dAppCluster
 
 
-RUN tar zxf /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz -C /etc/dAppCluster/; \
-    mkdir -p /usr/local/nodejs\
-    && mv /etc/dAppCluster/node-v22.2.0-linux-x64/* /usr/local/nodejs
-    && rm -rf /etc/dAppCluster/node-v22.2.0-linux-x64 /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz
+RUN tar zxf /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz -C /etc/dAppCluster/ && \
+    mkdir -p /usr/local/nodejs && \
+    mv /etc/dAppCluster/node-v22.2.0-linux-x64/* /usr/local/nodejs && \
+    rm -rf /etc/dAppCluster/node-v22.2.0-linux-x64 /etc/dAppCluster/node-v22.2.0-linux-x64.tar.gz
 
 
 RUN mkdir -p /usr/share/filebeat  && cd /usr/share && \
