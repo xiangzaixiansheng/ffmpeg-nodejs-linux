@@ -54,9 +54,9 @@ RUN apt-get update && apt-get install -y \
     libasound2t64 \
     libpango-1.0-0 \
     libcairo2  && \
-    apt install -y adb build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fonts-noto-cjk  && \
+    apt install -y g++ adb build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fonts-noto-cjk  && \
     # 安装gl相关包
-    apt-get install -y build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config && \
+    apt-get install -y  g++ build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config libx11-dev && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
