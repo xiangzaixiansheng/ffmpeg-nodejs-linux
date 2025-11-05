@@ -68,6 +68,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN cnpm install -g puppeteer@24.28.0 --unsafe-perm
 
 # 预制ffcreator
+RUN npm install -g gl@4.9.2 --build-from-source
 RUN npm install -g ffcreator@7.5.8 --unsafe-perm --build-from-source=false;
 
 # 拷贝 Chrome 安装包
