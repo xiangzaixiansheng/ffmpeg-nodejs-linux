@@ -64,10 +64,6 @@ RUN apt-get update && apt-get install -y \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
-# 安装 C++ 标准库头文件
-RUN apt-get update && apt-get install -y libstdc++-12-dev g++-12 && \
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100 && \
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100
 # 安装gl相关包
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
