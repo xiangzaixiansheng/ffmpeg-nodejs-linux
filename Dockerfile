@@ -57,10 +57,17 @@ RUN apt-get update && apt-get install -y \
     apt install -y g++ adb libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fonts-noto-cjk  && \
     # 安装gl相关包
     apt-get install -y  g++ build-essential make libxi-dev libglu1-mesa-dev libglew-dev pkg-config libx11-dev && \
+    # 安装ffcreator依赖
+    apt-get install -y libstdc++-12-dev g++-12 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
-
+# 安装 C++ 标准库头文件
+RUN apt-get update && apt-get install -y libstdc++-12-dev g++-12 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100
 # 安装gl相关包
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
@@ -68,8 +75,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN cnpm install -g puppeteer@24.28.0 --unsafe-perm
 
 # 预制ffcreator
-RUN npm install -g gl@4.9.2 --build-from-source
-RUN npm install -g ffcreator@7.5.8 --unsafe-perm --build-from-source=false;
+RUN npm install -g ffcreator@7.5.8 --unsafe-perm;
 
 # 拷贝 Chrome 安装包
 COPY google-chrome-stable_current_amd64.deb /tmp/
